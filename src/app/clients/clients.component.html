@@ -1,0 +1,27 @@
+<table class="table" *ngIf="clients">
+
+
+
+    <thead >
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nom</th>
+    </tr>
+    </thead>
+
+
+
+    <tbody>
+
+    <tr *ngFor="let c of clients">
+        <th scope="row"  >{{c.id}}</th>
+        <td colspan="2">{{c.nom}}</td>
+    </tr>
+
+    </tbody>
+
+
+
+
+
+</table>
