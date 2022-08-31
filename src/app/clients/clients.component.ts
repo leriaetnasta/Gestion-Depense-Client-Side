@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {ClientService} from "../services/client.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-clients',
@@ -7,17 +9,23 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  clients: any; //
-  constructor(private http:HttpClient ) { }
+  clients$: Observable<any> | undefined;
+    errorObj: Object | undefined;
+    errorMsg: String | undefined;
+  constructor(private clientService : ClientService ) { }
 
   ngOnInit(): void { // methode s'excute au demarrage; au moment de chargement de component
-    this.http.get("http://localhost:8086/clients").subscribe(data=>{
-      this .clients=data
-    },error=>{
-      console.log(error)
-    }
+    this.clientService.getClients().subscribe(
+        {next: data => {
+            this.clients$ = data;
+          } ,
+          error : err=> {
 
-    ) // des que les données arrive je recupere les données typscript et les stocker dans une var
+            console.error(err);
+
+          }}
+    )
+
   }
 
 }

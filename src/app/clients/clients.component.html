@@ -1,8 +1,13 @@
-<table class="table" *ngIf="clients">
+
+<div class="card">
+    <div class="card-header">
+        Clients
+    </div>
+    <div class="card-body">
+        <table class="table" *ngIf="clients">
 
 
-
-    <thead >
+        <thead >
     <tr>
         <th scope="col">#</th>
         <th scope="col">Nom</th>
@@ -13,7 +18,7 @@
 
     <tbody>
 
-    <tr *ngFor="let c of clients">
+    <tr *ngFor="let c of clients$ | async">
         <th scope="row"  >{{c.id}}</th>
         <td colspan="2">{{c.nom}}</td>
     </tr>
@@ -25,3 +30,6 @@
 
 
 </table>
+
+</div>
+</div>
