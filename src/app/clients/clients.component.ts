@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ClientService} from "../services/client.service";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
+import { Client } from '../model/clients.model';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-clients',
@@ -9,23 +11,35 @@ import {Observable} from "rxjs";
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  clients$: Observable<any> | undefined;
+  clients$!: Observable<Array<Client>>;
     errorObj: Object | undefined;
     errorMsg: String | undefined;
-  constructor(private clientService : ClientService ) { }
+    searchFormGroup!: FormGroup;
+  constructor(private clientService : ClientService, private fb:FormBuilder) { }
 
   ngOnInit(): void { // methode s'excute au demarrage; au moment de chargement de component
-    this.clientService.getClients().subscribe(
-        {next: data => {
-            this.clients$ = data;
-          } ,
-          error : err=> {
-
-            console.error(err);
-
-          }}
+    this.searchFormGroup= this.fb.group({
+      keyword : this.fb.control("")
+    }
     )
+    this.clients$=this.clientService.getClients().pipe(
+        catchError(erreur=> {
+          this.errorMsg=erreur.message;
+          return throwError(erreur);
+        }
+
+    ))
 
   }
 
+  handleSearch() {
+    let k= this.searchFormGroup?.value.keyword; // ? si la valeur est differente de undefined
+    this.clients$=this.clientService.searchClient(k).pipe(
+        catchError(erreur=> {
+              this.errorMsg=erreur.message;
+              return throwError(erreur);
+            }
+
+        ))
+  }
 }

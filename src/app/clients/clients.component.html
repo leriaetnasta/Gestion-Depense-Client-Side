@@ -4,7 +4,32 @@
         Clients
     </div>
     <div class="card-body">
-        <table class="table" *ngIf="clients">
+        <div *ngIf="searchFormGroup">
+            <!--afficher le formulaire seulement si searchformgroup est creée et initialisé!-->
+        <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearch()" >
+            <div class="input-group">
+                <label class="input-group-text">Keyword : </label>
+                <input type="text" formControlName="keyword" class="form-control">
+                <button class="btn bg-info"> <i class="bi bi-search"></i> </button>
+            </div>
+        </form>
+        </div>
+
+        <ng-container *ngIf="clients$ | async; else loadingOrErrorAlert">
+
+
+        </ng-container>
+
+        <ng-template #loadingOrErrorAlert>
+            <ng-container *ngIf="errorObj; else loading">
+
+            </ng-container>
+
+            <!-- loading-->
+            <ng-template #loading>
+            </ng-template>
+        </ng-template>
+        <table class="table">
 
 
         <thead >

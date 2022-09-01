@@ -12,6 +12,7 @@ import { ProjetsComponent } from './projets/projets.component';
 import { ClientsComponent } from './clients/clients.component';
 import { EmployesComponent } from './employes/employes.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { AddClientComponent } from './add-client/add-client.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     DeplacementsComponent,
     ProjetsComponent,
     ClientsComponent,
-    EmployesComponent
+    EmployesComponent,
+    AddClientComponent
   ],
   imports: [
     BrowserModule,

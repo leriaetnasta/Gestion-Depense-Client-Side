@@ -6,6 +6,7 @@ import {EmployesComponent} from "./employes/employes.component";
 import {DeplacementsComponent} from "./deplacements/deplacements.component";
 import {ProjetsComponent} from "./projets/projets.component";
 import {ClientsComponent} from "./clients/clients.component";
+import {AddClientComponent} from "./add-client/add-client.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path : 'employes', component : EmployesComponent},
   {path : 'deplacements', component : DeplacementsComponent},
   {path : 'projets', component : ProjetsComponent},
-  {path : 'clients', component : ClientsComponent}
+  {path : 'clients', component : ClientsComponent},
+  {path : 'addclient', component : AddClientComponent}
+
 
 ];
 
