@@ -36,6 +36,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Nom</th>
+
     </tr>
     </thead>
 
@@ -46,6 +47,11 @@
     <tr *ngFor="let c of clients$ | async">
         <th scope="row"  >{{c.id}}</th>
         <td colspan="2">{{c.nom}}</td>
+        <td>
+            <button (click)="handleDeleteClient(c)" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+            </button>
+        </td>
     </tr>
 
     </tbody>
