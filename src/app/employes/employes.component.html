@@ -1,1 +1,54 @@
-<p>employes works!</p>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col col-md-6">
+            <div class="card">
+                <div class="card-header">Employes</div>
+                <div class="card-body">
+                    <form [formGroup]="employeFormGroup" (ngSubmit)="handleSearchEmploye()">
+                        <div class="input-group">
+                            <label class="input-group-text">Keyword : </label>
+                            <input type="text" formControlName="keyword" class="form-control">
+                            <button class="btn bg-info"> <i class="bi bi-search"></i> </button>
+
+                        </div>
+
+                    </form>
+                    <ng-container *ngIf="employeObservable$ | async as employe">
+                        <div>
+                            <label>Employe Id :</label>
+
+                        </div>
+                        <div>
+                            <label> Id :</label>
+
+                        </div>
+                        <div>
+                            <label>Matricule :</label>
+                        </div>
+                        <div>
+                            <label>Nom :</label>
+                        </div>
+                        <div>
+                            <label>Prenom :</label>
+                        </div>
+                        <div>
+                            <label>Email :</label>
+                        </div>
+
+                        <div>
+                            <label>PhoneNumber :</label>
+                        </div>
+                        <div>
+                            <label>Departement :</label>
+                        </div>
+                    </ng-container>
+                </div>
+
+            </div>
+        </div>
+        <div class="col col-md-6">
+
+        </div>
+    </div>
+
+</div>
