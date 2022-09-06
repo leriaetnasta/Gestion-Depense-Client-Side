@@ -11,7 +11,7 @@ export class EmployeService {
 
   constructor(private http:HttpClient) { }
 
-  public searchEmploye(empId:number, page: number, size : number): Observable<Employe>{
-    return this.http.get<Employe>(environment.backendHost+"/employes?page="+page+"&size="+size);
+  public searchOneEmployeID(empId:number): Observable<Employe>{
+    return this.http.get<Employe>(environment.backendHost+"/employes/"+empId);
   }
 }

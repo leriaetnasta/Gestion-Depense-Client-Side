@@ -7,39 +7,48 @@
                     <form [formGroup]="employeFormGroup" (ngSubmit)="handleSearchEmploye()">
                         <div class="input-group">
                             <label class="input-group-text">Keyword : </label>
-                            <input type="text" formControlName="keyword" class="form-control">
+                            <input type="text" formControlName="employeId" class="form-control">
                             <button class="btn bg-info"> <i class="bi bi-search"></i> </button>
 
                         </div>
 
                     </form>
                     <ng-container *ngIf="employeObservable$ | async as employe">
-                        <div>
+                        <div class="mt-2">
                             <label>Employe Id :</label>
+                            <label><strong>{{employe.id}}</strong></label>
 
                         </div>
-                        <div>
-                            <label> Id :</label>
-
-                        </div>
-                        <div>
+                        <div class="mt-2">
                             <label>Matricule :</label>
+                            <label><strong>{{employe.matricule}}</strong></label>
+
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <label>Nom :</label>
+                            <label><strong>{{employe.nom}}</strong></label>
+
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <label>Prenom :</label>
+                            <label><strong>{{employe.prenom}}</strong></label>
+
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <label>Email :</label>
+                            <label><strong>{{employe.email}}</strong></label>
+
                         </div>
 
-                        <div>
+                        <div class="mt-2">
                             <label>PhoneNumber :</label>
+                            <label><strong>{{employe.phoneNumber}}</strong></label>
+
                         </div>
-                        <div>
+                        <div class="mt-2">
                             <label>Departement :</label>
+                            <label><strong>{{employe.departement}}</strong></label>
+
                         </div>
                     </ng-container>
                 </div>
