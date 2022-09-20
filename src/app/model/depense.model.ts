@@ -5,7 +5,7 @@ export interface Depense {
     montant:            number;
     modeReglement:      string;
     titre:              string;
-    pieceJustificative: null;
+    pieceJustificative: string;
     deplacement:        DeplacementDTO;
     commentaire:        string;
 }
@@ -18,11 +18,11 @@ export interface DeplacementDTO {
 }
 
 export enum Status{
-    PENDING="En attente", ACCEPTE="Validé", REJETE="Refusé"
+    PENDING, ACCEPTE, REJETE
 
 }
 export enum ModeReglement {
-    CARTE_BANCAIRE= "Carte Bancaire",
-    ESPECES="Espèce",
-    CHEQUE="Cheque"
+    CARTE_BANCAIRE,
+    ESPECES,
+    CHEQUE
 }
